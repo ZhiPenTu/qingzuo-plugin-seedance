@@ -1,0 +1,33 @@
+{
+  "name": "@commerce/plugin-seedance",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "commerce": {
+    "manifestVersion": 1,
+    "id": "official.seedance",
+    "title": "Seedance 视频生成",
+    "description": "基于 Seedance 2.5 模型生成高质量视频，支持文生视频与首帧图生视频",
+    "category": "视频生成",
+    "api": "^1.2.0",
+    "ui": "ui/index.html",
+    "releaseNotes": "首版：接入 Seedance 2.5 新一代视频生成模型，支持文生视频与首帧图生视频，提供比例、分辨率与时长配置，生成任务异步轮询与结果预览保存。",
+    "permissions": {
+      "files": true,
+      "credentials": [
+        "volcengine-ark-key"
+      ],
+      "network": [
+        "https://ark.cn-beijing.volces.com"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "pack": "node scripts/pack-plugin.mjs"
+  },
+  "dependencies": {
+    "@commerce/plugin-sdk": "file:vendor/commerce-plugin-sdk-1.2.0.tgz"
+  },
+  "license": "MIT"
+}
