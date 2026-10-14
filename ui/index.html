@@ -15,11 +15,15 @@
   </header>
 
   <section class="card settings">
-    <label for="key">火山方舟 API 密钥 (API Key)</label>
+    <div class="settings-title-row">
+      <label for="key">火山方舟 API 密钥 (API Key)</label>
+      <a href="https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey" target="_blank" rel="noopener noreferrer" class="link-btn">获取 API Key ↗</a>
+    </div>
     <div class="row">
       <input type="password" id="key" autocomplete="off" placeholder="输入火山方舟 API Key，安全保存在系统凭据库">
       <button id="save-key">保存密钥</button>
       <button id="clear-key" class="secondary">清除密钥</button>
+      <a href="https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey" target="_blank" rel="noopener noreferrer" class="button-link secondary">获取 API Key ↗</a>
     </div>
     <p id="key-status" role="status">正在检查密钥状态…</p>
   </section>
