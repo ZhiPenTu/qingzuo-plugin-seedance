@@ -7,94 +7,100 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main>
-  <header>
-    <p class="eyebrow">视频生成</p>
-    <h1>Seedance 2.5 视频生成</h1>
-    <p>接入火山方舟 Seedance 2.5 模型，支持文生视频与首帧图生视频。生成任务将在云端处理，使用您自己的火山方舟调用额度。</p>
+<main class="tool-page">
+  <header class="page-head">
+    <div>
+      <h1>Seedance 视频生成</h1>
+      <p>文生视频与首帧生成，使用你的火山方舟额度。</p>
+    </div>
+    <span class="mode-badge">视频</span>
   </header>
 
   <section class="card settings">
     <div class="settings-title-row">
-      <label for="key">火山方舟 API 密钥 (API Key)</label>
+      <label for="key">火山方舟 API 密钥</label>
       <a href="https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey" target="_blank" rel="noopener noreferrer" class="link-btn">获取 API Key ↗</a>
     </div>
     <div class="row">
       <input type="password" id="key" autocomplete="off" placeholder="输入火山方舟 API Key，安全保存在系统凭据库">
       <button id="save-key">保存密钥</button>
       <button id="clear-key" class="secondary">清除密钥</button>
-      <a href="https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey" target="_blank" rel="noopener noreferrer" class="button-link secondary">获取 API Key ↗</a>
     </div>
     <p id="key-status" role="status">正在检查密钥状态…</p>
   </section>
 
-  <section class="card">
-    <div class="form-group">
-      <label for="mode">生成模式</label>
-      <select id="mode">
-        <option value="t2v">文生视频（文本提示词直接生成）</option>
-        <option value="i2v">首帧图生视频（选择图片作为起始帧）</option>
-      </select>
-    </div>
-
-    <div class="form-group" id="image-group" hidden>
-      <label>首帧图片</label>
-      <div class="row">
-        <button id="pick-image" class="secondary" type="button">选择首帧图片</button>
-        <button id="clear-image" class="secondary" type="button" hidden>移除图片</button>
-      </div>
-      <img id="first-frame-preview" class="thumb-preview" alt="首帧缩略图" hidden>
-      <p id="image-info">支持 JPG、PNG、WebP，大小不超过 20 MB。</p>
-    </div>
-
-    <div class="form-group">
-      <label for="prompt">视频提示词</label>
-      <textarea id="prompt" placeholder="描述镜头画面、主体动作、光影与场景运镜（例如：电影质感特写，晨光洒进咖啡馆，咖啡杯升腾起轻柔的热气，慢速推镜头）"></textarea>
-    </div>
-
-    <div class="grid-3">
-      <div class="form-group">
-        <label for="ratio">视频画面比例</label>
-        <select id="ratio">
-          <option value="adaptive" selected>自适应 (adaptive)</option>
-          <option value="16:9">16:9 (横屏视频)</option>
-          <option value="9:16">9:16 (竖屏短视频)</option>
-          <option value="1:1">1:1 (方形)</option>
-          <option value="4:3">4:3</option>
-          <option value="3:4">3:4</option>
-        </select>
+  <div class="tool-grid">
+    <section class="card composer">
+      <div class="section-head">
+        <div><h2>生成参数</h2><p>选择模式并描述镜头。</p></div>
       </div>
       <div class="form-group">
-        <label for="duration">视频时长</label>
-        <select id="duration">
-          <option value="5" selected>5 秒</option>
-          <option value="10">10 秒</option>
+        <label for="mode">生成模式</label>
+        <select id="mode">
+          <option value="t2v">文生视频</option>
+          <option value="i2v">首帧图生视频</option>
         </select>
       </div>
+
+      <div class="form-group" id="image-group" hidden>
+        <label>首帧图片</label>
+        <div class="row">
+          <button id="pick-image" class="secondary" type="button">选择首帧图片</button>
+          <button id="clear-image" class="secondary" type="button" hidden>移除图片</button>
+        </div>
+        <img id="first-frame-preview" class="thumb-preview" alt="首帧缩略图" hidden>
+        <p id="image-info">支持 JPG、PNG、WebP，最大 20 MB。</p>
+      </div>
+
       <div class="form-group">
-        <label for="resolution">画质分辨率</label>
-        <select id="resolution">
-          <option value="720p" selected>720p 高清</option>
-          <option value="1080p">1080p 超清</option>
-        </select>
+        <label for="prompt">视频提示词</label>
+        <textarea id="prompt" placeholder="例如：电影质感特写，晨光洒进咖啡馆，咖啡杯升腾起轻柔热气，慢速推镜头。"></textarea>
       </div>
-    </div>
 
-    <div class="actions">
-      <button id="run">开始生成视频</button>
-      <button id="cancel" class="secondary" disabled>取消任务</button>
-      <button id="save-video" class="secondary" disabled>保存 MP4 视频</button>
-    </div>
-    <p id="status" role="status">请配置 API 密钥并输入提示词后开始生成。</p>
-  </section>
+      <div class="grid-3">
+        <div class="form-group">
+          <label for="ratio">画面比例</label>
+          <select id="ratio">
+            <option value="adaptive" selected>自适应</option>
+            <option value="16:9">16:9</option>
+            <option value="9:16">9:16</option>
+            <option value="1:1">1:1</option>
+            <option value="4:3">4:3</option>
+            <option value="3:4">3:4</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="duration">时长</label>
+          <select id="duration">
+            <option value="5" selected>5 秒</option>
+            <option value="10">10 秒</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="resolution">分辨率</label>
+          <select id="resolution">
+            <option value="720p" selected>720p</option>
+            <option value="1080p">1080p</option>
+          </select>
+        </div>
+      </div>
 
-  <section class="card">
-    <label>视频预览</label>
-    <div class="preview-container">
-      <video id="video-result" controls playsinline hidden></video>
-      <div id="preview-placeholder" class="preview-placeholder">生成完成后即可在此在线预览视频</div>
-    </div>
-  </section>
+      <div class="actions">
+        <button id="run">开始生成</button>
+        <button id="cancel" class="secondary" disabled>取消</button>
+        <button id="save-video" class="secondary" disabled>保存视频</button>
+      </div>
+      <p id="status" role="status">配置密钥并输入提示词后开始生成。</p>
+    </section>
+
+    <section class="card preview-card">
+      <div class="section-head"><div><h2>预览</h2><p>生成后可在此检查并保存。</p></div></div>
+      <div class="preview-container">
+        <video id="video-result" controls playsinline hidden></video>
+        <div id="preview-placeholder" class="preview-placeholder"><span class="preview-mark" aria-hidden="true">▶</span><strong>还没有视频</strong><span>生成结果会显示在这里</span></div>
+      </div>
+    </section>
+  </div>
 </main>
 <script type="module" src="app.mjs"></script>
 </body>
