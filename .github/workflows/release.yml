@@ -52,4 +52,4 @@ jobs:
       - name: Publish validated artifacts
         run: |
           node --input-type=module -e "import pkg from './package.json' with {type:'json'};if(process.env.GITHUB_REF_NAME!=='v'+pkg.version)throw new Error('Tag mismatch');"
-          gh release create "$GITHUB_REF_NAME" release/*.ecplugin release/catalog-*.json --verify-tag --title "$GITHUB_REF_NAME" --notes "界面配色统一为轻作底座语义色，支持跟随系统的浅色与深色模式。"
+          gh release create "$GITHUB_REF_NAME" release/*.ecplugin release/catalog-*.json --verify-tag --title "$GITHUB_REF_NAME" --notes "重新设计视频生成工作台，参数与结果预览并列展示，收紧圆角与间距，支持深色与窄屏。"

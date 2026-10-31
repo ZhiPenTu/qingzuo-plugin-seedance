@@ -1,6 +1,6 @@
 {
   "name": "@commerce/plugin-seedance",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "type": "module",
   "commerce": {
@@ -11,7 +11,7 @@
     "category": "视频生成",
     "api": "^1.2.0",
     "ui": "ui/index.html",
-    "releaseNotes": "界面配色统一为轻作底座语义色，支持跟随系统的浅色与深色模式。",
+    "releaseNotes": "重新设计视频生成工作台，参数与结果预览并列展示，收紧圆角与间距，支持深色与窄屏。",
     "permissions": {
       "files": true,
       "credentials": [
